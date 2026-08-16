@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V3 — Chaleureux et vivant · Autonome en Guemara</title>
+  <meta name="description" content="Un pas de plus vers l'autonomie en Guemara. Cours particuliers Zoom avec Rav Yoël Yaacov Laguerre." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style-base.css" />
+  <style>
+    /* ── V3 — Chaleureux et vivant ── */
+    :root {
+      --fond:            #f5f0e8;
+      --fond-alt:        #ede5d8;
+      --texte:           #2d2417;
+      --texte-doux:      #5c4a35;
+      --texte-leger:     #8c7a65;
+      --accent:          #8b1a1a;
+      --accent-clair:    #a82020;
+      --accent-alpha:    rgba(139,26,26,0.12);
+      --accent2:         #c9a84c;
+      --accent2-clair:   #dbb95e;
+      --accent2-alpha:   rgba(201,168,76,0.12);
+      --separateur:      #d4c8b4;
+      --card-fond:       #fdfaf5;
+      --card-ombre:      rgba(45,36,23,0.07);
+      --card-ombre-hover:rgba(45,36,23,0.13);
+      --footer-fond:     #2d2417;
+      --footer-texte:    rgba(245,240,232,0.45);
+      --footer-lien:     rgba(201,168,76,0.6);
+      --btn-accent-texte:#ffffff;
+      --ff-titre: 'Playfair Display', Georgia, serif;
+      --ff-corps: 'Inter', system-ui, sans-serif;
+    }
+    /* Select arrow bordeaux */
+    .formulaire__champ select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b1a1a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+    /* Bouton WhatsApp en or sur V3 */
+    .btn--accent2 {
+      background: var(--accent2);
+      color: #2d2417;
+      border: 2px solid var(--accent2);
+    }
+    .btn--accent2:hover {
+      background: var(--accent2-clair);
+      border-color: var(--accent2-clair);
+      color: #2d2417;
+    }
+    /* Contour bouton en bordeaux */
+    .btn--contour {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .btn--contour:hover {
+      background: var(--accent-alpha);
+      color: var(--accent-clair);
+      border-color: var(--accent-clair);
+    }
+    /* Noms Rabbanim en or sur fond chaud */
+    .card-rav__nom { color: var(--accent); }
+    /* Témoignages — footer en bordeaux */
+    .temoignage footer { color: var(--accent); }
+    /* Bio strong en bordeaux */
+    .bio__texte strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__logo-texte">
+        <span class="hero__logo-titre">Autonome en Guemara</span>
+        <span class="hero__logo-ligne"></span>
+      </div>
+      <div class="hero__sous-logo">Un pas de plus vers l'autonomie en Guemara</div>
+      <div class="hero__image-wrap">
+        <img src="images/hero.png" alt="Élève étudiant la Guemara à la bougie" class="hero__image" loading="eager" />
+      </div>
+      <h1 class="hero__titre">La Guemara vous attire.<br>Mais elle reste opaque, floue.</h1>
+      <p class="hero__sous-titre">
+        Ce n'est pas un manque de capacité. C'est l'absence d'un guide à l'initiation — et d'une méthode pour faire un pas de plus dans l'étude de la Guemara.
+      </p>
+      <div class="hero__cta">
+        <a href="#formulaire" class="btn btn--accent">Commencer par un essai gratuit</a>
+        <a href="https://wa.me/972528917509" class="btn btn--accent2" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Vous vous reconnaissez&nbsp;?</h2>
+      <p class="prose">
+        Vous étudiez. Vous bloquez. Vous réessayez. Vous faites du «&nbsp;sur place&nbsp;».<br>
+        Vous lisez des mots — mais le raisonnement vous échappe.<br>
+        Vous suivez le fil — mais le vocabulaire vous freine.<br><br>
+        Vous rêvez de progresser vraiment. Et même un jour d'avancer dans une Guemara seul, sans dépendre de personne.<br><br>
+        Mais sans méthode. Et sans quelqu'un qui prend le temps de s'occuper de vous — pas à pas.<br><br>
+        Les cours de groupe ne suffisent pas&nbsp;: on n'y pose pas vraiment ses questions et ça va tellement vite…
+      </p>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section">
+    <div class="container">
+      <h2>Pourquoi j'ai créé cette méthode</h2>
+      <p class="prose">
+        Je suis Yoël Yaacov Laguerre. À mes débuts en Guemara, je me sentais seul face à un océan insaisissable — sans repères, sans guide.<br>
+        Je voyais bien qu'il y avait une structure logique, mais je n'étais pas initié.<br><br>
+        Pour en sortir, je suis retourné à la Yéchiva et parallèlement, j'ai développé ma propre méthode. Testée, améliorée, affinée pendant plus de 20 ans, auprès de grands noms rabbiniques de l'étude talmudique.<br><br>
+        Vraiment progresser dans l'étude de la Guemara est possible. Peu importe votre âge. Peu importe votre niveau de départ.<br><br>
+        Cela demande un guide à l'initiation — et une méthode structurée.<br><br>
+        C'est exactement ce que je propose.
+      </p>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Comment se déroule un cours</h2>
+      <div class="etape">
+        <div class="etape__num">1</div>
+        <div class="etape__corps">
+          <h3>Bilan pédagogique</h3>
+          <p>Premier cours&nbsp;: on évalue votre niveau ensemble. On définit des objectifs clairs, réalistes, adaptés à votre profil. On fixe le nombre d'heures que vous êtes prêt à investir chaque semaine. On construit votre plan d'évolution sur-mesure.</p>
+        </div>
+      </div>
+      <div class="etape">
+        <div class="etape__num">2</div>
+        <div class="etape__corps">
+          <h3>Cours particulier Zoom</h3>
+          <p>Chaque semaine, on ouvre le texte ensemble. Je vous apprends à décoder la page, les mots clés et raisonnements typiques de la Guemara, à décortiquer un Rachi, synthétiser les étapes d'un Tosafot, à avancer seul entre les séances.</p>
+        </div>
+      </div>
+      <div class="etape">
+        <div class="etape__num">3</div>
+        <div class="etape__corps">
+          <h3>Autonomie progressive</h3>
+          <p>À chaque leçon, vous acquérez du vocabulaire, des techniques de lecture, des réflexes d'analyse. L'autonomie se construit progressivement et durablement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section" id="recommandations">
+    <div class="container">
+      <h2>Ils recommandent la méthode</h2>
+      <p class="section__sous-titre">Des Rabbanim qui ont suivi mon enseignement de près</p>
+      <div class="cards-grid">
+        <article class="card-rav">
+          <img src="images/rav_morali.png" alt="Rav Michaël Morali" class="card-rav__photo" loading="lazy" />
+          <div class="card-rav__corps">
+            <div class="card-rav__nom">Rav Michaël Morali</div>
+            <blockquote class="card-rav__citation">"Je conseille vivement de suivre sa méthode, car c'est une révolution dans l'étude."</blockquote>
+          </div>
+        </article>
+        <article class="card-rav">
+          <img src="images/rav_benchetrit.png" alt="Rav Ye'hia Benchetrit" class="card-rav__photo" loading="lazy" />
+          <div class="card-rav__corps">
+            <div class="card-rav__nom">Rav Ye'hia Benchetrit</div>
+            <blockquote class="card-rav__citation">"L'étude de la Guemara devient accessible à tout le monde."</blockquote>
+          </div>
+        </article>
+        <article class="card-rav">
+          <img src="images/rav_bentata.png" alt="Rav Yossef Bentata" class="card-rav__photo" loading="lazy" />
+          <div class="card-rav__corps">
+            <div class="card-rav__nom">Rav Yossef Bentata</div>
+            <blockquote class="card-rav__citation">"J'ai personnellement apprécié la pédagogie."</blockquote>
+          </div>
+        </article>
+        <article class="card-rav">
+          <img src="images/rav_hamou.png" alt="Rav Messod Hamou zatsal" class="card-rav__photo" loading="lazy" />
+          <div class="card-rav__corps">
+            <div class="card-rav__nom">Rav Messod Hamou <em>zatsal</em></div>
+            <blockquote class="card-rav__citation">"Suivez son enseignement pour vous initier."</blockquote>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section section--alt" id="temoignages">
+    <div class="container">
+      <h2>Ce qu'en disent les élèves</h2>
+      <div class="temoignages-liste">
+        <blockquote class="temoignage"><p>"Malgré le nombre d'années, mon niveau était sensiblement le même depuis plusieurs années. Dès les premiers cours, j'ai noté des progrès. En quatre mois j'ai fait des progrès que je n'ai pas faits en cinq ans."</p><footer>— <cite>Dan H.</cite></footer></blockquote>
+        <blockquote class="temoignage temoignage--alt"><p>"Je peux vous garantir que je suis sur la voie de l'autonomie complète avec cette méthode."</p><footer>— <cite>Émile B.</cite></footer></blockquote>
+        <blockquote class="temoignage"><p>"La Guemara était une montagne infranchissable qui est devenue accessible avec Rav Yaacov Laguerre."</p><footer>— <cite>Gabriel</cite></footer></blockquote>
+        <blockquote class="temoignage temoignage--alt"><p>"Enfin une méthode efficace. J'ai suivi beaucoup de cours, mais la méthode de Rabbi Yoël Yaacov Laguerre est la plus aboutie. Des cours en direct, un cahier de l'élève, des QCM, on s'investit et on voit sa propre progression. Du jamais vu."</p><footer>— <cite>David Abeasis</cite></footer></blockquote>
+        <blockquote class="temoignage"><p>"Je n'aurais jamais pu me lancer dans l'étude de la Guemara sans vous et sans cette formation. Maintenant, j'arrive bien mieux à comprendre et à mémoriser chaque partie de l'étude."</p><footer>— <cite>Nathan Arditti</cite></footer></blockquote>
+        <blockquote class="temoignage temoignage--alt"><p>"J'arrive à lire, traduire et comprendre les Rachis qui me semblaient inaccessibles."</p><footer>— <cite>Israël M.</cite></footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section" id="biographie">
+    <div class="container">
+      <h2>Yoël Yaacov Laguerre</h2>
+      <div class="bio">
+        <img src="images/rav_yaacov.jpg" alt="Rav Yoël Yaacov Laguerre" class="bio__photo" loading="lazy" />
+        <div class="bio__texte">
+          <p>Formé pendant 10 années auprès des plus grands Maîtres du Talmud&nbsp;: Rav Messod 'Hamou, Rav Chlomo Frech, Rav Reouven O'hana, Rav Yossef Bentata, Rav Smadja.</p>
+          <p>Enseignant de Guemara depuis 2007 — en Yéchiva, puis en ligne. Fondateur de <strong>bakibadaf.com</strong> en 2019 (70 élèves par jour pendant le confinement). Plus de 20 ans de développement de la méthode.</p>
+          <p>Basé à Jérusalem. Cours particuliers Zoom pour francophones du monde entier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section section--alt" id="tarifs">
+    <div class="container">
+      <h2>Choisissez votre formule</h2>
+      <div class="tarifs-grid">
+        <article class="tarif-card">
+          <h3 class="tarif-card__titre">Cours classique</h3>
+          <div class="tarif-card__prix">150 ₪<span> / heure</span></div>
+          <ul class="tarif-card__liste">
+            <li>Cours particulier Zoom, 1 heure</li>
+            <li>Méthode Bakibadaf sur votre texte</li>
+            <li>Adapté à votre niveau</li>
+            <li>Séance d'essai gratuite</li>
+          </ul>
+          <a href="#formulaire" class="btn btn--contour">Commencer</a>
+        </article>
+        <article class="tarif-card tarif-card--recommande">
+          <div class="tarif-card__badge">Recommandé</div>
+          <h3 class="tarif-card__titre">Coaching complet</h3>
+          <div class="tarif-card__prix">180 ₪<span> / heure</span></div>
+          <ul class="tarif-card__liste">
+            <li>Cours particulier Zoom, 1 heure</li>
+            <li>Replay enregistré de la séance</li>
+            <li>PDF récapitulatif de la leçon</li>
+            <li>Suivi personnalisé de la progression</li>
+            <li>Séance d'essai gratuite</li>
+          </ul>
+          <a href="#formulaire" class="btn btn--accent">Commencer</a>
+        </article>
+      </div>
+      <p class="tarifs__note">Paiement par virement bancaire ou PayPal. Facturation à la séance, sans engagement.</p>
+    </div>
+  </section>
+
+  <hr class="separateur" />
+
+  <section class="section" id="formulaire">
+    <div class="container">
+      <h2>Commencer par une séance d'essai gratuite</h2>
+      <p class="section__sous-titre">Remplissez ce formulaire — je vous réponds dans les 24 heures.</p>
+      <form action="https://formspree.io/f/xaewdpge" method="POST" class="formulaire">
+        <input type="hidden" name="_next" value="https://autonomeenguemara.fr/merci.html" />
+        <div class="formulaire__champ">
+          <label for="nom">Prénom et nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Votre prénom et nom" required autocomplete="name" />
+        </div>
+        <div class="formulaire__champ">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="votre@email.com" required autocomplete="email" />
+        </div>
+        <div class="formulaire__champ">
+          <label for="niveau">Votre niveau actuel en Guemara</label>
+          <select id="niveau" name="niveau" required>
+            <option value="" disabled selected>Sélectionnez votre niveau</option>
+            <option value="debutant-complet">Débutant complet</option>
+            <option value="vocabulaire">J'ai beaucoup de mal avec le vocabulaire</option>
+            <option value="raisonnements">J'ai les mots mais je ne comprends pas les raisonnements</option>
+            <option value="dependance">Je ne veux plus dépendre d'un Rav pour avancer</option>
+            <option value="bases-autonomie">J'ai des bases mais je veux vraiment devenir autonome</option>
+          </select>
+        </div>
+        <div class="formulaire__champ">
+          <label for="objectif">Votre objectif en quelques mots</label>
+          <textarea id="objectif" name="objectif" rows="4" placeholder="Décrivez votre situation et ce que vous souhaitez atteindre…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--accent btn--large">Envoyer ma demande</button>
+      </form>
+      <p class="formulaire__whatsapp">
+        Ou écrivez-moi directement sur WhatsApp →
+        <a href="https://wa.me/972528917509" target="_blank" rel="noopener">wa.me/972528917509</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Yoel Yaacov Laguerre — Tous droits réservés</p>
+      <p class="footer__liens-sites">
+        <a href="https://bakibadaf.com" target="_blank" rel="noopener">bakibadaf.com</a>
+        &nbsp;|&nbsp;
+        <a href="https://autonomeenguemara.fr" target="_blank" rel="noopener">autonomeenguemara.fr</a>
+      </p>
+      <nav class="footer__reseaux" aria-label="Réseaux sociaux">
+        <a href="https://www.youtube.com/@bakibadaf" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.995 2.995 0 0 0-2.107-2.12C19.416 3.5 12 3.5 12 3.5s-7.416 0-9.391.566A2.995 2.995 0 0 0 .502 6.186C0 8.18 0 12 0 12s0 3.82.502 5.814a2.995 2.995 0 0 0 2.107 2.12C4.584 20.5 12 20.5 12 20.5s7.416 0 9.391-.566a2.995 2.995 0 0 0 2.107-2.12C24 15.82 24 12 24 12s0-3.82-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+        <a href="https://www.facebook.com/bakibadaf" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>Facebook</a>
+        <a href="https://www.tiktok.com/@bakibadaf" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.78 1.52V6.77a4.86 4.86 0 0 1-1.01-.08z"/></svg>TikTok</a>
+        <a href="https://www.instagram.com/bakibadaf" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>Instagram</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
