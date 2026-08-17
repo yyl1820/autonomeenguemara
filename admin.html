@@ -29,6 +29,8 @@
       --rouge-clair: #c62828;
       --orange:      #e67e22;
       --orange-clair:#d35400;
+      --violet:      #6a1b9a;
+      --violet-clair:#7b1fa2;
 
       --ff-titre: 'Playfair Display', Georgia, serif;
       --ff-corps: 'Inter', system-ui, sans-serif;
@@ -56,187 +58,100 @@
       flex-wrap: wrap;
       gap: 12px;
     }
-    .header__titre {
-      font-family: var(--ff-titre);
-      font-size: 1.3rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-    .header__sous {
-      font-size: 0.8rem;
-      opacity: 0.75;
-      font-style: italic;
-    }
+    .header__titre { font-family: var(--ff-titre); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.02em; }
+    .header__sous  { font-size: 0.8rem; opacity: 0.75; font-style: italic; }
     .header__badge {
-      background: var(--or);
-      color: var(--bleu);
-      font-weight: 600;
-      font-size: 0.8rem;
-      padding: 4px 12px;
-      border-radius: 20px;
-      white-space: nowrap;
+      background: var(--or); color: var(--bleu);
+      font-weight: 600; font-size: 0.8rem;
+      padding: 4px 12px; border-radius: 20px; white-space: nowrap;
     }
 
     /* ── Auth screen ── */
-    .auth-screen {
-      max-width: 420px;
-      margin: 80px auto;
-      padding: 0 24px;
-      text-align: center;
-    }
-    .auth-screen h2 {
-      font-family: var(--ff-titre);
-      font-size: 1.6rem;
-      color: var(--bleu);
-      margin-bottom: 8px;
-    }
-    .auth-screen p {
-      color: var(--texte-doux);
-      margin-bottom: 28px;
-      font-size: 0.9rem;
-    }
+    .auth-screen { max-width: 420px; margin: 80px auto; padding: 0 24px; text-align: center; }
+    .auth-screen h2 { font-family: var(--ff-titre); font-size: 1.6rem; color: var(--bleu); margin-bottom: 8px; }
+    .auth-screen p  { color: var(--texte-doux); margin-bottom: 28px; font-size: 0.9rem; }
     .auth-card {
-      background: var(--card-fond);
-      border-radius: 14px;
-      box-shadow: 0 4px 20px var(--card-ombre);
-      padding: 32px 28px;
+      background: var(--card-fond); border-radius: 14px;
+      box-shadow: 0 4px 20px var(--card-ombre); padding: 32px 28px;
     }
     .auth-card label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--texte-doux);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-      text-align: left;
+      display: block; font-size: 0.85rem; font-weight: 600;
+      color: var(--texte-doux); text-transform: uppercase;
+      letter-spacing: 0.05em; margin-bottom: 8px; text-align: left;
     }
     .auth-card input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid var(--separateur);
-      border-radius: 8px;
-      font-family: var(--ff-corps);
-      font-size: 1rem;
-      background: var(--fond);
-      color: var(--texte);
-      outline: none;
-      transition: border-color 0.2s;
-      margin-bottom: 16px;
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--separateur); border-radius: 8px;
+      font-family: var(--ff-corps); font-size: 1rem;
+      background: var(--fond); color: var(--texte);
+      outline: none; transition: border-color 0.2s; margin-bottom: 16px;
     }
     .auth-card input:focus { border-color: var(--bleu); }
     .auth-card input[type="password"] { letter-spacing: 0.1em; }
 
     /* ── Buttons ── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-family: var(--ff-corps);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 11px 22px; border-radius: 8px;
+      font-family: var(--ff-corps); font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; border: none;
       transition: background 0.2s, transform 0.1s, opacity 0.2s;
-      text-decoration: none;
-      white-space: nowrap;
+      text-decoration: none; white-space: nowrap;
     }
-    .btn:active { transform: scale(0.97); }
-    .btn:disabled { opacity: 0.45; cursor: default; }
+    .btn:active  { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.45; cursor: default; transform: none; }
 
     .btn--bleu   { background: var(--bleu);   color: #fff; width: 100%; }
-    .btn--bleu:hover { background: var(--bleu-clair); }
-
+    .btn--bleu:hover   { background: var(--bleu-clair); }
     .btn--vert   { background: var(--vert);   color: #fff; }
-    .btn--vert:hover { background: var(--vert-clair); }
-
+    .btn--vert:hover   { background: var(--vert-clair); }
     .btn--rouge  { background: var(--rouge);  color: #fff; }
-    .btn--rouge:hover { background: var(--rouge-clair); }
-
+    .btn--rouge:hover  { background: var(--rouge-clair); }
     .btn--orange { background: var(--orange); color: #fff; }
     .btn--orange:hover { background: var(--orange-clair); }
-
+    .btn--violet { background: var(--violet); color: #fff; }
+    .btn--violet:hover { background: var(--violet-clair); }
     .btn--or     { background: var(--or);     color: var(--bleu); }
-    .btn--or:hover { background: var(--or-clair); }
-
+    .btn--or:hover     { background: var(--or-clair); }
     .btn--ghost {
-      background: transparent;
-      border: 1.5px solid var(--separateur);
-      color: var(--texte-doux);
+      background: transparent; border: 1.5px solid var(--separateur); color: var(--texte-doux);
     }
-    .btn--ghost:hover { border-color: var(--bleu); color: var(--bleu); }
+    .btn--ghost:hover  { border-color: var(--bleu); color: var(--bleu); }
 
     /* ── Main ── */
-    .main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 32px 24px 80px;
-    }
+    .main { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
 
     /* ── Toolbar ── */
     .toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 28px;
     }
-    .toolbar__titre {
-      font-family: var(--ff-titre);
-      font-size: 1.4rem;
-      color: var(--bleu);
-    }
-    .toolbar__titre span {
-      color: var(--or);
-      font-style: italic;
-    }
+    .toolbar__titre { font-family: var(--ff-titre); font-size: 1.4rem; color: var(--bleu); }
+    .toolbar__titre span { color: var(--or); font-style: italic; }
 
-    /* ── État vide / chargement ── */
-    .etat {
-      text-align: center;
-      padding: 60px 24px;
-      color: var(--texte-doux);
-    }
+    /* ── États ── */
+    .etat { text-align: center; padding: 60px 24px; color: var(--texte-doux); }
     .etat__icone { font-size: 2.5rem; margin-bottom: 12px; }
     .etat__titre { font-family: var(--ff-titre); font-size: 1.2rem; color: var(--texte); margin-bottom: 8px; }
     .etat__texte { font-size: 0.9rem; }
-
     .spinner {
       width: 36px; height: 36px;
-      border: 3px solid var(--separateur);
-      border-top-color: var(--bleu);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      margin: 0 auto 16px;
+      border: 3px solid var(--separateur); border-top-color: var(--bleu);
+      border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── Toast ── */
     .toast-wrap {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      left: 24px;
-      max-width: 400px;
-      margin: 0 auto;
-      z-index: 1000;
-      pointer-events: none;
+      position: fixed; bottom: 24px; right: 24px; left: 24px;
+      max-width: 400px; margin: 0 auto; z-index: 1000; pointer-events: none;
     }
     .toast {
-      background: var(--texte);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-size: 0.9rem;
+      background: var(--texte); color: #fff;
+      padding: 12px 18px; border-radius: 10px; font-size: 0.9rem;
       box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.25s, transform 0.25s;
-      pointer-events: auto;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.25s, transform 0.25s; pointer-events: auto;
     }
     .toast.show { opacity: 1; transform: translateY(0); }
     .toast.ok   { background: var(--vert); }
@@ -244,201 +159,189 @@
 
     /* ── Card ── */
     .card {
-      background: var(--card-fond);
-      border-radius: 14px;
+      background: var(--card-fond); border-radius: 14px;
       box-shadow: 0 3px 16px var(--card-ombre);
-      margin-bottom: 20px;
-      overflow: hidden;
-      border-left: 4px solid var(--or);
-      transition: box-shadow 0.2s;
+      margin-bottom: 20px; overflow: hidden;
+      border-left: 4px solid var(--or); transition: box-shadow 0.2s;
     }
     .card:hover { box-shadow: 0 6px 24px rgba(26,26,46,0.12); }
     .card.resolving { opacity: 0.55; pointer-events: none; }
 
     .card__head {
       padding: 20px 24px 16px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
     }
-    .card__nom {
-      font-family: var(--ff-titre);
-      font-size: 1.2rem;
-      color: var(--bleu);
-      font-weight: 600;
-    }
-    .card__badges {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      align-items: center;
-      flex-shrink: 0;
-    }
+    .card__nom { font-family: var(--ff-titre); font-size: 1.2rem; color: var(--bleu); font-weight: 600; }
+    .card__badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; flex-shrink: 0; }
     .badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 3px 9px; border-radius: 12px;
+      text-transform: uppercase; letter-spacing: 0.04em;
     }
-    .badge--canal   { background: #e8eef7; color: var(--bleu); }
-    .badge--profil  { background: #fef3e2; color: #7a4800; }
-    .badge--niveau  { background: #f0ebe3; color: #5a4828; }
+    .badge--canal  { background: #e8eef7; color: var(--bleu); }
+    .badge--profil { background: #fef3e2; color: #7a4800; }
+    .badge--niveau { background: #f0ebe3; color: #5a4828; }
 
     .card__meta {
-      padding: 0 24px 14px;
-      font-size: 0.82rem;
-      color: var(--texte-leger);
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+      padding: 0 24px 14px; font-size: 0.82rem;
+      color: var(--texte-leger); display: flex; gap: 16px; flex-wrap: wrap;
     }
 
     /* ── Contexte prospect ── */
     .card__contexte {
       margin: 0 24px 16px;
-      border: 1px solid var(--separateur);
-      border-radius: 8px;
-      overflow: hidden;
-      font-size: 0.87rem;
+      border: 1px solid var(--separateur); border-radius: 8px;
+      overflow: hidden; font-size: 0.87rem;
     }
     .card__contexte-head {
-      background: var(--fond-alt);
-      padding: 8px 14px;
-      font-size: 0.73rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--texte-leger);
+      background: var(--fond-alt); padding: 8px 14px;
+      font-size: 0.73rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--texte-leger);
     }
     .card__hist-entry {
-      padding: 10px 14px;
-      border-top: 1px solid var(--separateur);
-      line-height: 1.6;
-      white-space: pre-wrap;
-      word-break: break-word;
+      padding: 10px 14px; border-top: 1px solid var(--separateur);
+      line-height: 1.6; white-space: pre-wrap; word-break: break-word;
     }
-    .card__hist-entry--prospect { background: #eef3fb; }
-    .card__hist-entry--agent    { background: #f8f6f2; }
-    .card__hist-entry--brouillon { background: #fff9ee; }
+    .card__hist-entry--prospect  { background: #eef3fb; }
+    .card__hist-entry--agent     { background: #f8f6f2; }
     .card__hist-role {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;
     }
     .card__hist-entry--prospect .card__hist-role { color: var(--bleu); }
     .card__hist-entry--agent    .card__hist-role { color: var(--texte-leger); }
-    .card__hist-entry--brouillon .card__hist-role { color: var(--orange); }
-    .card__hist-date {
-      font-weight: 400;
-      font-size: 0.68rem;
-      color: var(--texte-leger);
-    }
+    .card__hist-date { font-weight: 400; font-size: 0.68rem; color: var(--texte-leger); }
     .card__no-historique {
-      padding: 10px 14px;
-      border-top: 1px solid var(--separateur);
-      color: var(--texte-leger);
-      font-style: italic;
-      font-size: 0.83rem;
+      padding: 10px 14px; border-top: 1px solid var(--separateur);
+      color: var(--texte-leger); font-style: italic; font-size: 0.83rem;
     }
 
     /* ── Brouillon ── */
     .card__message-label {
-      padding: 0 24px 8px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--texte-leger);
+      padding: 0 24px 8px; font-size: 0.78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--texte-leger);
     }
     .card__message {
-      margin: 0 24px 16px;
-      padding: 16px 18px;
-      background: var(--fond);
-      border-radius: 8px;
+      margin: 0 24px 16px; padding: 16px 18px;
+      background: var(--fond); border-radius: 8px;
       border: 1px solid var(--separateur);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--texte);
-      white-space: pre-wrap;
-      word-break: break-word;
+      font-size: 0.9rem; line-height: 1.7; color: var(--texte);
+      white-space: pre-wrap; word-break: break-word;
+    }
+
+    /* ── Co-pilote IA ── */
+    .card__copilote {
+      margin: 0 24px 16px;
+      border: 1.5px solid #e0d5f0;
+      border-radius: 10px; overflow: hidden;
+    }
+    .card__copilote-head {
+      background: #f5f0fb; padding: 10px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; cursor: pointer; user-select: none;
+    }
+    .card__copilote-head-left {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--violet); letter-spacing: 0.02em;
+    }
+    .card__copilote-toggle {
+      font-size: 0.72rem; color: var(--texte-leger);
+      transition: transform 0.2s;
+    }
+    .card__copilote-toggle.open { transform: rotate(180deg); }
+    .card__copilote-body {
+      display: none; padding: 14px 16px;
+      background: #fdfaff;
+      border-top: 1px solid #e0d5f0;
+    }
+    .card__copilote-body.open { display: block; }
+
+    .copilote__rapides-label {
+      font-size: 0.73rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--texte-leger); margin-bottom: 8px;
+    }
+    .copilote__rapides {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+    }
+    .copilote__rapides button {
+      font-size: 0.8rem; padding: 5px 12px; border-radius: 20px;
+      border: 1.5px solid #c9b3e8; background: #f0e8fa;
+      color: var(--violet); cursor: pointer; font-family: var(--ff-corps);
+      font-weight: 500; transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .copilote__rapides button:hover { background: #e3d4f5; border-color: var(--violet); }
+    .copilote__rapides button:disabled { opacity: 0.4; cursor: default; }
+
+    .copilote__libre-label {
+      font-size: 0.73rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--texte-leger); margin-bottom: 6px;
+    }
+    .copilote__libre {
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .copilote__libre input {
+      flex: 1; padding: 9px 13px;
+      border: 1.5px solid #c9b3e8; border-radius: 8px;
+      font-family: var(--ff-corps); font-size: 0.88rem;
+      background: #fff; color: var(--texte); outline: none;
+      transition: border-color 0.2s;
+    }
+    .copilote__libre input:focus { border-color: var(--violet); }
+    .copilote__libre input::placeholder { color: var(--texte-leger); }
+    .copilote__libre button {
+      padding: 9px 16px; border-radius: 8px; border: none;
+      background: var(--violet); color: #fff; font-family: var(--ff-corps);
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      white-space: nowrap; transition: background 0.15s;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .copilote__libre button:hover    { background: var(--violet-clair); }
+    .copilote__libre button:disabled { opacity: 0.4; cursor: default; }
+
+    .copilote__status {
+      margin-top: 10px; font-size: 0.82rem; color: var(--violet);
+      font-style: italic; min-height: 20px;
     }
 
     /* ── Zone édition (Corriger) ── */
     .card__edit-zone {
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      margin: 0 24px 16px;
+      display: none; flex-direction: column; gap: 8px; margin: 0 24px 16px;
     }
     .card__edit-zone.open { display: flex; }
     .card__edit-zone label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--orange);
+      font-size: 0.78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--orange);
     }
     .card__edit-zone textarea {
-      width: 100%;
-      min-height: 160px;
-      padding: 14px 16px;
-      border: 1.5px solid var(--orange);
-      border-radius: 8px;
-      font-family: var(--ff-corps);
-      font-size: 0.9rem;
-      resize: vertical;
-      outline: none;
-      background: #fffdf7;
-      color: var(--texte);
-      line-height: 1.7;
+      width: 100%; min-height: 160px; padding: 14px 16px;
+      border: 1.5px solid var(--orange); border-radius: 8px;
+      font-family: var(--ff-corps); font-size: 0.9rem;
+      resize: vertical; outline: none; background: #fffdf7;
+      color: var(--texte); line-height: 1.7;
     }
     .card__edit-zone textarea:focus { border-color: var(--orange-clair); }
-    .card__edit-row {
-      display: flex;
-      gap: 8px;
-      justify-content: flex-end;
-    }
+    .card__edit-row { display: flex; gap: 8px; justify-content: flex-end; }
 
     /* ── Actions ── */
-    .card__actions {
-      padding: 0 24px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .card__actions-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* ── Section "déjà traités" ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--separateur);
-      margin: 36px 0 28px;
-    }
+    .card__actions { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .card__actions-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
     /* ── Responsive ── */
     @media (max-width: 540px) {
       .main { padding: 20px 16px 60px; }
       .card__head { padding: 16px 18px 12px; }
-      .card__contexte { margin: 0 18px 14px; }
-      .card__message { margin: 0 18px 14px; }
-      .card__edit-zone { margin: 0 18px 14px; }
+      .card__contexte, .card__message, .card__copilote, .card__edit-zone { margin-left: 18px; margin-right: 18px; }
       .card__actions { padding: 0 18px 18px; }
       .card__actions-row { flex-direction: column; }
       .card__actions-row .btn { width: 100%; }
       .btn--vert, .btn--orange { width: 100%; }
+      .copilote__rapides button { font-size: 0.75rem; padding: 5px 10px; }
     }
   </style>
 </head>
@@ -462,7 +365,7 @@
     <input type="password" id="secretInput" placeholder="••••••••••••••••••••••••" autocomplete="current-password" />
     <label for="serverInput">URL du serveur</label>
     <input type="url" id="serverInput" value="https://turbogrowth.onrender.com" />
-    <button class="btn btn--bleu" id="authBtn" onclick="seConnecter()">Se connecter</button>
+    <button class="btn btn--bleu" onclick="seConnecter()">Se connecter</button>
   </div>
 </div>
 
@@ -497,6 +400,15 @@
 
 <script>
   const BASE_URL_DEFAULT = 'https://turbogrowth.onrender.com'
+  const PROMPTS_RAPIDES = [
+    'Passer au tutoiement',
+    'Passer au vouvoiement',
+    'Rendre plus chaleureux',
+    'Rendre plus professionnel',
+    'Simplifier le message',
+    'Corriger fautes d\'orthographe et syntaxe',
+    'Raccourcir',
+  ]
 
   let SECRET = ''
   let SERVER = BASE_URL_DEFAULT
@@ -522,14 +434,14 @@
   }
 
   function seConnecter() {
-    const s = document.getElementById('secretInput').value.trim()
+    const s   = document.getElementById('secretInput').value.trim()
     const srv = document.getElementById('serverInput').value.trim()
     if (!s) { afficherToast('Entrez la clé secrète', 'err'); return }
     SECRET = s
     SERVER = srv || BASE_URL_DEFAULT
     sauvegarderConfig()
     document.getElementById('authScreen').style.display = 'none'
-    document.getElementById('dashboard').style.display = 'block'
+    document.getElementById('dashboard').style.display  = 'block'
     charger()
   }
 
@@ -537,7 +449,7 @@
     SECRET = ''
     try { localStorage.removeItem('aeg_secret') } catch(e) {}
     document.getElementById('authScreen').style.display = 'block'
-    document.getElementById('dashboard').style.display = 'none'
+    document.getElementById('dashboard').style.display  = 'none'
     document.getElementById('secretInput').value = ''
   }
 
@@ -545,17 +457,14 @@
   function afficherToast(msg, type = '') {
     const t = document.getElementById('toast')
     t.textContent = msg
-    t.className = 'toast show' + (type ? ' ' + type : '')
+    t.className   = 'toast show' + (type ? ' ' + type : '')
     clearTimeout(toastTimer)
-    toastTimer = setTimeout(() => { t.classList.remove('show') }, 3500)
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3500)
   }
 
   // ── API ─────────────────────────────────────────────────
   async function api(method, path, body) {
-    const opts = {
-      method,
-      headers: { 'x-aeg-secret': SECRET, 'Content-Type': 'application/json' }
-    }
+    const opts = { method, headers: { 'x-aeg-secret': SECRET, 'Content-Type': 'application/json' } }
     if (body) opts.body = JSON.stringify(body)
     const r = await fetch(SERVER + path, opts)
     if (!r.ok) {
@@ -567,20 +476,20 @@
 
   // ── Chargement ───────────────────────────────────────────
   async function charger() {
-    const zoneChargement = document.getElementById('zoneChargement')
-    const zoneVide       = document.getElementById('zoneVide')
-    const liste          = document.getElementById('listeCards')
-    const badge          = document.getElementById('headerBadge')
+    const zl    = document.getElementById('zoneChargement')
+    const zv    = document.getElementById('zoneVide')
+    const liste = document.getElementById('listeCards')
+    const badge = document.getElementById('headerBadge')
 
-    zoneChargement.style.display = 'block'
-    zoneVide.style.display       = 'none'
-    liste.innerHTML              = ''
+    zl.style.display = 'block'
+    zv.style.display = 'none'
+    liste.innerHTML  = ''
 
     try {
-      const data = await api('GET', '/api/aeg/prospects')
+      const data      = await api('GET', '/api/aeg/prospects')
       const enAttente = (data.prospects || []).filter(p => p.brouillon_statut === 'en_attente')
 
-      badge.textContent = enAttente.length + ' en attente'
+      badge.textContent   = enAttente.length + ' en attente'
       badge.style.display = enAttente.length ? 'block' : 'none'
 
       const titre = document.getElementById('toolbarTitre')
@@ -588,17 +497,12 @@
         ? `Brouillons <span>en attente</span> (${enAttente.length})`
         : `Brouillons <span>en attente</span>`
 
-      zoneChargement.style.display = 'none'
-
-      if (!enAttente.length) {
-        zoneVide.style.display = 'block'
-        return
-      }
-
+      zl.style.display = 'none'
+      if (!enAttente.length) { zv.style.display = 'block'; return }
       enAttente.forEach(p => liste.appendChild(creerCard(p)))
 
     } catch(err) {
-      zoneChargement.style.display = 'none'
+      zl.style.display = 'none'
       afficherToast('Erreur : ' + err.message, 'err')
       if (err.message.startsWith('401')) {
         afficherToast('Secret invalide — reconnectez-vous', 'err')
@@ -624,29 +528,23 @@
     } catch(e) { return iso }
   }
 
-  // ── Rendu de l'historique ─────────────────────────────────
+  // ── Contexte / historique ────────────────────────────────
   function rendrContexte(p) {
-    const hist = Array.isArray(p.historique) ? p.historique : []
-    // Exclure le brouillon en attente courant (role agent_brouillon) — il est affiché en bas
+    const hist   = Array.isArray(p.historique) ? p.historique : []
     const entrees = hist.filter(e => e.role !== 'agent_brouillon')
-
     let html = `<div class="card__contexte">`
     html += `<div class="card__contexte-head">📋 Contexte — ${esc(p.canal || '—')} · ${entrees.length} échange${entrees.length !== 1 ? 's' : ''}</div>`
-
     if (!entrees.length) {
       html += `<div class="card__no-historique">Premier contact — aucun échange précédent.</div>`
     } else {
       entrees.forEach(e => {
         const isProspect = e.role === 'prospect'
-        const isAgent    = e.role === 'agent' || e.role === 'agent_brouillon'
-        const cls = isProspect ? 'prospect' : isAgent ? 'agent' : 'agent'
-        const roleLabel = isProspect
+        const cls        = isProspect ? 'prospect' : 'agent'
+        const roleLabel  = isProspect
           ? '💬 Prospect'
-          : e.valide_par === 'yaacov_alternatif'
-            ? '✏️ Yoël (corrigé)'
-            : e.valide_par === 'yaacov'
-              ? '✔ Yoël (validé)'
-              : '🤖 Agent (brouillon)'
+          : e.valide_par === 'yaacov_alternatif' ? '✏️ Yoël (corrigé)'
+          : e.valide_par === 'yaacov'            ? '✔ Yoël (validé)'
+          : '🤖 Agent (brouillon)'
         html += `
           <div class="card__hist-entry card__hist-entry--${cls}">
             <div class="card__hist-role">
@@ -657,45 +555,49 @@
           </div>`
       })
     }
-
-    // Lien LinkedIn si disponible
     if (p.linkedin_url) {
       html += `<div class="card__no-historique">🔗 <a href="${esc(p.linkedin_url)}" target="_blank" rel="noopener" style="color:var(--bleu)">Voir le profil LinkedIn</a></div>`
     }
+    return html + `</div>`
+  }
 
-    html += `</div>`
-    return html
+  // ── Co-pilote IA : contexte résumé pour l'API ────────────
+  function resumeContexte(p) {
+    const hist = Array.isArray(p.historique) ? p.historique : []
+    return hist.slice(-6)
+      .map(e => `[${e.role === 'prospect' ? 'Prospect' : 'Agent'}] ${e.contenu || ''}`)
+      .join('\n')
   }
 
   // ── Création d'une card ───────────────────────────────────
   function creerCard(p) {
-    const card = document.createElement('div')
+    const card   = document.createElement('div')
     card.className = 'card'
-    card.id = 'card-' + p.id
+    card.id        = 'card-' + p.id
 
     const profils = {
-      DEBUTANT_COMPLET:   'Débutant complet',
-      BLOQUE_VOCABULAIRE: 'Bloqué — vocabulaire',
-      BLOQUE_LOGIQUE:     'Bloqué — logique',
-      REVEUR_AUTONOMIE:   'Rêveur d\'autonomie',
-      PROJET_FAMILIAL:    'Projet familial',
-      MARRE_DES_GROUPES:  'Marre des groupes',
-      INCONNU:            'Inconnu',
+      DEBUTANT_COMPLET: 'Débutant complet', BLOQUE_VOCABULAIRE: 'Bloqué — vocabulaire',
+      BLOQUE_LOGIQUE: 'Bloqué — logique',   REVEUR_AUTONOMIE: 'Rêveur d\'autonomie',
+      PROJET_FAMILIAL: 'Projet familial',   MARRE_DES_GROUPES: 'Marre des groupes',
+      INCONNU: 'Inconnu',
     }
     const canaux = {
       email: '✉ Email', linkedin: '💼 LinkedIn',
-      facebook: '🔵 Facebook', instagram: '📸 Instagram',
-      tiktok: '🎵 TikTok'
+      facebook: '🔵 Facebook', instagram: '📸 Instagram', tiktok: '🎵 TikTok'
     }
 
-    const nomAffiche = [p.prenom, p.nom].filter(Boolean).join(' ') || p.email || ('Prospect #' + p.id)
+    const nomAffiche  = [p.prenom, p.nom].filter(Boolean).join(' ') || p.email || ('Prospect #' + p.id)
     const profilLabel = profils[p.profil] || p.profil || '—'
-    const canalLabel  = canaux[p.canal] || p.canal || '—'
+    const canalLabel  = canaux[p.canal]   || p.canal   || '—'
     const niveauLabel = 'N' + (p.niveau ?? '?')
-    const message = p.brouillon_message || '(aucun message enregistré)'
-    const metaDate = p.created_at
+    const message     = p.brouillon_message || '(aucun message enregistré)'
+    const metaDate    = p.created_at
       ? new Date(p.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
       : ''
+
+    const promptsHtml = PROMPTS_RAPIDES
+      .map(pr => `<button onclick="lancerPromptRapide(${p.id}, this)" data-prompt="${esc(pr)}">${esc(pr)}</button>`)
+      .join('')
 
     card.innerHTML = `
       <div class="card__head">
@@ -707,8 +609,8 @@
         </div>
       </div>
       <div class="card__meta">
-        ${p.email ? `<span>✉ ${esc(p.email)}</span>` : ''}
-        ${metaDate ? `<span>🗓 ${esc(metaDate)}</span>` : ''}
+        ${p.email    ? `<span>✉ ${esc(p.email)}</span>` : ''}
+        ${metaDate   ? `<span>🗓 ${esc(metaDate)}</span>` : ''}
         ${p.followup_count ? `<span>📨 Relance nº${p.followup_count}</span>` : ''}
       </div>
 
@@ -717,44 +619,155 @@
       <div class="card__message-label">Message brouillon</div>
       <div class="card__message" id="msg-${p.id}">${esc(message)}</div>
 
+      <!-- ── Co-pilote IA ── -->
+      <div class="card__copilote" id="copilote-${p.id}">
+        <div class="card__copilote-head" onclick="toggleCopilote(${p.id})">
+          <div class="card__copilote-head-left">✨ Co-pilote IA</div>
+          <span class="card__copilote-toggle" id="copilote-toggle-${p.id}">▼</span>
+        </div>
+        <div class="card__copilote-body" id="copilote-body-${p.id}">
+          <div class="copilote__rapides-label">Prompts rapides</div>
+          <div class="copilote__rapides" id="copilote-rapides-${p.id}">${promptsHtml}</div>
+          <div class="copilote__libre-label">Instruction personnalisée</div>
+          <div class="copilote__libre">
+            <input type="text" id="copilote-input-${p.id}"
+              placeholder="Ex : ajouter une référence à Rachi, rendre plus bref…"
+              onkeydown="if(event.key==='Enter') lancerPromptLibre(${p.id})" />
+            <button id="copilote-btn-${p.id}" onclick="lancerPromptLibre(${p.id})">
+              <span id="copilote-btn-txt-${p.id}">→ Améliorer</span>
+            </button>
+          </div>
+          <div class="copilote__status" id="copilote-status-${p.id}"></div>
+        </div>
+      </div>
+
+      <!-- ── Zone édition manuelle ── -->
       <div class="card__edit-zone" id="edit-${p.id}">
-        <label for="edit-ta-${p.id}">✏️ Correction — message modifiable</label>
+        <label for="edit-ta-${p.id}">✏️ Message modifiable — corrigez puis envoyez</label>
         <textarea id="edit-ta-${p.id}">${esc(message)}</textarea>
         <div class="card__edit-row">
-          <button class="btn btn--ghost" onclick="annulerCorrection(${p.id})">Annuler</button>
-          <button class="btn btn--vert" onclick="envoyerCorrection(${p.id})">✔ Envoyer la version corrigée</button>
+          <button class="btn btn--ghost"  onclick="annulerCorrection(${p.id})">Annuler</button>
+          <button class="btn btn--vert"   onclick="envoyerCorrection(${p.id})">✔ Envoyer la version corrigée</button>
         </div>
       </div>
 
       <div class="card__actions" id="actions-${p.id}">
         <div class="card__actions-row">
           <button class="btn btn--vert"   onclick="valider(${p.id})">✔ Valider &amp; envoyer</button>
-          <button class="btn btn--orange" onclick="ouvrirCorrection(${p.id})">✏️ Corriger</button>
+          <button class="btn btn--orange" onclick="ouvrirCorrection(${p.id})">✏️ Corriger manuellement</button>
         </div>
       </div>
     `
+
+    // Stocker le contexte comme data-attr sur la card pour y accéder dans les handlers
+    card.dataset.contexte = resumeContexte(p)
+
     return card
   }
 
-  // ── Corriger ──────────────────────────────────────────────
+  // ── Co-pilote : toggle ────────────────────────────────────
+  function toggleCopilote(id) {
+    const body   = document.getElementById('copilote-body-' + id)
+    const toggle = document.getElementById('copilote-toggle-' + id)
+    const open   = body.classList.toggle('open')
+    toggle.classList.toggle('open', open)
+  }
+
+  // ── Co-pilote : appel IA ──────────────────────────────────
+  async function appelerCopilote(id, prompt) {
+    if (!prompt.trim()) return
+
+    const card      = document.getElementById('card-' + id)
+    const editZone  = document.getElementById('edit-' + id)
+    const textarea  = document.getElementById('edit-ta-' + id)
+    const msgDiv    = document.getElementById('msg-' + id)
+    const statusEl  = document.getElementById('copilote-status-' + id)
+    const btnEl     = document.getElementById('copilote-btn-' + id)
+    const btnTxtEl  = document.getElementById('copilote-btn-txt-' + id)
+    const rapides   = document.getElementById('copilote-rapides-' + id)
+
+    // Message à améliorer : textarea si édition ouverte, sinon brouillon original
+    const messageActuel = editZone.classList.contains('open')
+      ? (textarea.value || msgDiv.innerText)
+      : msgDiv.innerText
+
+    const contexte = card.dataset.contexte || ''
+
+    // UI loading
+    statusEl.textContent = '✨ Génération en cours…'
+    if (btnEl)    btnEl.disabled    = true
+    if (btnTxtEl) btnTxtEl.textContent = '…'
+    if (rapides)  rapides.querySelectorAll('button').forEach(b => b.disabled = true)
+
+    try {
+      const res = await api('POST', '/api/aeg/improve-draft', {
+        message: messageActuel,
+        prompt:  prompt,
+        context: contexte,
+      })
+
+      if (!res.improved) throw new Error('Réponse vide')
+
+      // Ouvrir la zone d'édition et y mettre le résultat
+      if (!editZone.classList.contains('open')) {
+        ouvrirCorrection(id)
+      }
+      textarea.value = res.improved
+      textarea.focus()
+
+      statusEl.textContent = '✅ Amélioré — vérifiez et envoyez.'
+      setTimeout(() => { statusEl.textContent = '' }, 4000)
+
+    } catch(err) {
+      statusEl.textContent = '❌ Erreur : ' + err.message
+      afficherToast('Co-pilote : ' + err.message, 'err')
+    } finally {
+      if (btnEl)    btnEl.disabled    = false
+      if (btnTxtEl) btnTxtEl.textContent = '→ Améliorer'
+      if (rapides)  rapides.querySelectorAll('button').forEach(b => b.disabled = false)
+    }
+  }
+
+  function lancerPromptRapide(id, btn) {
+    const prompt = btn.dataset.prompt || btn.textContent
+    // Ouvrir le co-pilote si fermé
+    const body = document.getElementById('copilote-body-' + id)
+    if (!body.classList.contains('open')) toggleCopilote(id)
+    appelerCopilote(id, prompt)
+  }
+
+  function lancerPromptLibre(id) {
+    const input  = document.getElementById('copilote-input-' + id)
+    const prompt = (input?.value || '').trim()
+    if (!prompt) { afficherToast('Entrez une instruction', 'err'); return }
+    appelerCopilote(id, prompt)
+    input.value = ''
+  }
+
+  // ── Corriger manuellement ─────────────────────────────────
   function ouvrirCorrection(id) {
-    document.getElementById('edit-' + id).classList.add('open')
-    document.getElementById('actions-' + id).style.display = 'none'
-    document.getElementById('msg-' + id).style.display = 'none'
-    const ta = document.getElementById('edit-ta-' + id)
-    ta.focus()
-    ta.setSelectionRange(ta.value.length, ta.value.length)
+    const editZone = document.getElementById('edit-' + id)
+    const actions  = document.getElementById('actions-' + id)
+    const msgDiv   = document.getElementById('msg-' + id)
+    const textarea = document.getElementById('edit-ta-' + id)
+    // Si le textarea est vide (premier appel), le pré-remplir avec le brouillon affiché
+    if (!textarea.value.trim()) textarea.value = msgDiv.innerText
+    editZone.classList.add('open')
+    actions.style.display  = 'none'
+    msgDiv.style.display   = 'none'
+    textarea.focus()
+    textarea.setSelectionRange(textarea.value.length, textarea.value.length)
   }
 
   function annulerCorrection(id) {
     document.getElementById('edit-' + id).classList.remove('open')
-    document.getElementById('actions-' + id).style.display = 'flex'
-    document.getElementById('msg-' + id).style.display = 'block'
+    document.getElementById('actions-' + id).style.display = ''
+    document.getElementById('msg-' + id).style.display     = ''
   }
 
   async function envoyerCorrection(id) {
-    const card = document.getElementById('card-' + id)
-    const texte = (document.getElementById('edit-ta-' + id)?.value || '').trim()
+    const card   = document.getElementById('card-' + id)
+    const texte  = (document.getElementById('edit-ta-' + id)?.value || '').trim()
     if (!texte) { afficherToast('Le message ne peut pas être vide', 'err'); return }
     card.classList.add('resolving')
     try {
@@ -785,11 +798,11 @@
   }
 
   function disparaitreCard(card) {
-    card.style.transition = 'opacity 0.4s, max-height 0.5s'
-    card.style.opacity = '0'
-    card.style.overflow = 'hidden'
+    card.style.transition  = 'opacity 0.4s, max-height 0.5s'
+    card.style.opacity     = '0'
+    card.style.overflow    = 'hidden'
     setTimeout(() => {
-      card.style.maxHeight = '0'
+      card.style.maxHeight    = '0'
       card.style.marginBottom = '0'
       setTimeout(() => card.remove(), 400)
     }, 300)
@@ -806,7 +819,7 @@
         badge.style.display = 'none'
         titre.innerHTML = `Brouillons <span>en attente</span>`
       } else {
-        badge.textContent = remaining + ' en attente'
+        badge.textContent   = remaining + ' en attente'
         titre.innerHTML = `Brouillons <span>en attente</span> (${remaining})`
       }
     }, 800)
@@ -814,13 +827,11 @@
 
   // ── Démarrage ────────────────────────────────────────────
   chargerConfig()
-
   if (SECRET) {
     document.getElementById('authScreen').style.display = 'none'
-    document.getElementById('dashboard').style.display = 'block'
+    document.getElementById('dashboard').style.display  = 'block'
     charger()
   }
-
   document.getElementById('secretInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') seConnecter()
   })
