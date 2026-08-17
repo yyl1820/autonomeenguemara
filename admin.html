@@ -27,6 +27,8 @@
       --vert-clair:  #388e3c;
       --rouge:       #b71c1c;
       --rouge-clair: #c62828;
+      --orange:      #e67e22;
+      --orange-clair:#d35400;
 
       --ff-titre: 'Playfair Display', Georgia, serif;
       --ff-corps: 'Inter', system-ui, sans-serif;
@@ -145,16 +147,19 @@
     .btn:active { transform: scale(0.97); }
     .btn:disabled { opacity: 0.45; cursor: default; }
 
-    .btn--bleu  { background: var(--bleu);  color: #fff; width: 100%; }
+    .btn--bleu   { background: var(--bleu);   color: #fff; width: 100%; }
     .btn--bleu:hover { background: var(--bleu-clair); }
 
-    .btn--vert  { background: var(--vert);  color: #fff; }
+    .btn--vert   { background: var(--vert);   color: #fff; }
     .btn--vert:hover { background: var(--vert-clair); }
 
-    .btn--rouge { background: var(--rouge); color: #fff; }
+    .btn--rouge  { background: var(--rouge);  color: #fff; }
     .btn--rouge:hover { background: var(--rouge-clair); }
 
-    .btn--or    { background: var(--or);    color: var(--bleu); }
+    .btn--orange { background: var(--orange); color: #fff; }
+    .btn--orange:hover { background: var(--orange-clair); }
+
+    .btn--or     { background: var(--or);     color: var(--bleu); }
     .btn--or:hover { background: var(--or-clair); }
 
     .btn--ghost {
@@ -292,6 +297,60 @@
       flex-wrap: wrap;
     }
 
+    /* ── Contexte prospect ── */
+    .card__contexte {
+      margin: 0 24px 16px;
+      border: 1px solid var(--separateur);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.87rem;
+    }
+    .card__contexte-head {
+      background: var(--fond-alt);
+      padding: 8px 14px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--texte-leger);
+    }
+    .card__hist-entry {
+      padding: 10px 14px;
+      border-top: 1px solid var(--separateur);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .card__hist-entry--prospect { background: #eef3fb; }
+    .card__hist-entry--agent    { background: #f8f6f2; }
+    .card__hist-entry--brouillon { background: #fff9ee; }
+    .card__hist-role {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card__hist-entry--prospect .card__hist-role { color: var(--bleu); }
+    .card__hist-entry--agent    .card__hist-role { color: var(--texte-leger); }
+    .card__hist-entry--brouillon .card__hist-role { color: var(--orange); }
+    .card__hist-date {
+      font-weight: 400;
+      font-size: 0.68rem;
+      color: var(--texte-leger);
+    }
+    .card__no-historique {
+      padding: 10px 14px;
+      border-top: 1px solid var(--separateur);
+      color: var(--texte-leger);
+      font-style: italic;
+      font-size: 0.83rem;
+    }
+
+    /* ── Brouillon ── */
     .card__message-label {
       padding: 0 24px 8px;
       font-size: 0.78rem;
@@ -313,6 +372,43 @@
       word-break: break-word;
     }
 
+    /* ── Zone édition (Corriger) ── */
+    .card__edit-zone {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0 24px 16px;
+    }
+    .card__edit-zone.open { display: flex; }
+    .card__edit-zone label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--orange);
+    }
+    .card__edit-zone textarea {
+      width: 100%;
+      min-height: 160px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--orange);
+      border-radius: 8px;
+      font-family: var(--ff-corps);
+      font-size: 0.9rem;
+      resize: vertical;
+      outline: none;
+      background: #fffdf7;
+      color: var(--texte);
+      line-height: 1.7;
+    }
+    .card__edit-zone textarea:focus { border-color: var(--orange-clair); }
+    .card__edit-row {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    /* ── Actions ── */
     .card__actions {
       padding: 0 24px 24px;
       display: flex;
@@ -323,42 +419,6 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-    }
-    .card__reject-zone {
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      background: #fff5f5;
-      border: 1px solid #ffd0d0;
-      border-radius: 8px;
-      padding: 14px;
-    }
-    .card__reject-zone.open { display: flex; }
-    .card__reject-zone label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--rouge);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .card__reject-zone textarea {
-      width: 100%;
-      min-height: 80px;
-      padding: 10px 12px;
-      border: 1.5px solid #ffd0d0;
-      border-radius: 6px;
-      font-family: var(--ff-corps);
-      font-size: 0.9rem;
-      resize: vertical;
-      outline: none;
-      background: #fff;
-      color: var(--texte);
-    }
-    .card__reject-zone textarea:focus { border-color: var(--rouge); }
-    .card__reject-row {
-      display: flex;
-      gap: 8px;
-      justify-content: flex-end;
     }
 
     /* ── Section "déjà traités" ── */
@@ -372,11 +432,13 @@
     @media (max-width: 540px) {
       .main { padding: 20px 16px 60px; }
       .card__head { padding: 16px 18px 12px; }
+      .card__contexte { margin: 0 18px 14px; }
       .card__message { margin: 0 18px 14px; }
+      .card__edit-zone { margin: 0 18px 14px; }
       .card__actions { padding: 0 18px 18px; }
       .card__actions-row { flex-direction: column; }
       .card__actions-row .btn { width: 100%; }
-      .btn--vert, .btn--rouge { width: 100%; }
+      .btn--vert, .btn--orange { width: 100%; }
     }
   </style>
 </head>
@@ -517,7 +579,6 @@
     try {
       const data = await api('GET', '/api/aeg/prospects')
       const enAttente = (data.prospects || []).filter(p => p.brouillon_statut === 'en_attente')
-      const total = data.count || 0
 
       badge.textContent = enAttente.length + ' en attente'
       badge.style.display = enAttente.length ? 'block' : 'none'
@@ -539,13 +600,71 @@
     } catch(err) {
       zoneChargement.style.display = 'none'
       afficherToast('Erreur : ' + err.message, 'err')
-
-      // Si 401 → retour login
       if (err.message.startsWith('401')) {
         afficherToast('Secret invalide — reconnectez-vous', 'err')
         setTimeout(() => seDeconnecter(), 1800)
       }
     }
+  }
+
+  // ── Helpers ──────────────────────────────────────────────
+  function esc(s) {
+    return String(s ?? '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;')
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return ''
+    try {
+      return new Date(iso).toLocaleDateString('fr-FR', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      })
+    } catch(e) { return iso }
+  }
+
+  // ── Rendu de l'historique ─────────────────────────────────
+  function rendrContexte(p) {
+    const hist = Array.isArray(p.historique) ? p.historique : []
+    // Exclure le brouillon en attente courant (role agent_brouillon) — il est affiché en bas
+    const entrees = hist.filter(e => e.role !== 'agent_brouillon')
+
+    let html = `<div class="card__contexte">`
+    html += `<div class="card__contexte-head">📋 Contexte — ${esc(p.canal || '—')} · ${entrees.length} échange${entrees.length !== 1 ? 's' : ''}</div>`
+
+    if (!entrees.length) {
+      html += `<div class="card__no-historique">Premier contact — aucun échange précédent.</div>`
+    } else {
+      entrees.forEach(e => {
+        const isProspect = e.role === 'prospect'
+        const isAgent    = e.role === 'agent' || e.role === 'agent_brouillon'
+        const cls = isProspect ? 'prospect' : isAgent ? 'agent' : 'agent'
+        const roleLabel = isProspect
+          ? '💬 Prospect'
+          : e.valide_par === 'yaacov_alternatif'
+            ? '✏️ Yoël (corrigé)'
+            : e.valide_par === 'yaacov'
+              ? '✔ Yoël (validé)'
+              : '🤖 Agent (brouillon)'
+        html += `
+          <div class="card__hist-entry card__hist-entry--${cls}">
+            <div class="card__hist-role">
+              <span>${roleLabel}</span>
+              ${e.ts ? `<span class="card__hist-date">${esc(fmtDate(e.ts))}</span>` : ''}
+            </div>
+            <div>${esc(e.contenu || '')}</div>
+          </div>`
+      })
+    }
+
+    // Lien LinkedIn si disponible
+    if (p.linkedin_url) {
+      html += `<div class="card__no-historique">🔗 <a href="${esc(p.linkedin_url)}" target="_blank" rel="noopener" style="color:var(--bleu)">Voir le profil LinkedIn</a></div>`
+    }
+
+    html += `</div>`
+    return html
   }
 
   // ── Création d'une card ───────────────────────────────────
@@ -565,16 +684,15 @@
     }
     const canaux = {
       email: '✉ Email', linkedin: '💼 LinkedIn',
-      facebook: '🔵 Facebook', instagram: '📸 Instagram'
+      facebook: '🔵 Facebook', instagram: '📸 Instagram',
+      tiktok: '🎵 TikTok'
     }
 
     const nomAffiche = [p.prenom, p.nom].filter(Boolean).join(' ') || p.email || ('Prospect #' + p.id)
     const profilLabel = profils[p.profil] || p.profil || '—'
     const canalLabel  = canaux[p.canal] || p.canal || '—'
     const niveauLabel = 'N' + (p.niveau ?? '?')
-
     const message = p.brouillon_message || '(aucun message enregistré)'
-
     const metaDate = p.created_at
       ? new Date(p.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
       : ''
@@ -590,42 +708,67 @@
       </div>
       <div class="card__meta">
         ${p.email ? `<span>✉ ${esc(p.email)}</span>` : ''}
-        ${p.linkedin_url ? `<span>🔗 LinkedIn</span>` : ''}
         ${metaDate ? `<span>🗓 ${esc(metaDate)}</span>` : ''}
         ${p.followup_count ? `<span>📨 Relance nº${p.followup_count}</span>` : ''}
       </div>
-      <div class="card__message-label">Message généré</div>
-      <div class="card__message">${esc(message)}</div>
-      <div class="card__actions">
-        <div class="card__actions-row">
-          <button class="btn btn--vert" onclick="valider(${p.id})">✔ Valider &amp; envoyer</button>
-          <button class="btn btn--rouge" onclick="toggleRejet(${p.id})">✘ Rejeter</button>
+
+      ${rendrContexte(p)}
+
+      <div class="card__message-label">Message brouillon</div>
+      <div class="card__message" id="msg-${p.id}">${esc(message)}</div>
+
+      <div class="card__edit-zone" id="edit-${p.id}">
+        <label for="edit-ta-${p.id}">✏️ Correction — message modifiable</label>
+        <textarea id="edit-ta-${p.id}">${esc(message)}</textarea>
+        <div class="card__edit-row">
+          <button class="btn btn--ghost" onclick="annulerCorrection(${p.id})">Annuler</button>
+          <button class="btn btn--vert" onclick="envoyerCorrection(${p.id})">✔ Envoyer la version corrigée</button>
         </div>
-        <div class="card__reject-zone" id="reject-${p.id}">
-          <label for="alt-${p.id}">Message alternatif (optionnel)</label>
-          <textarea id="alt-${p.id}" placeholder="Laissez vide pour rejeter sans envoyer, ou écrivez un message de remplacement…"></textarea>
-          <div class="card__reject-row">
-            <button class="btn btn--ghost" onclick="toggleRejet(${p.id})">Annuler</button>
-            <button class="btn btn--rouge" onclick="rejeter(${p.id})">Confirmer le rejet</button>
-          </div>
+      </div>
+
+      <div class="card__actions" id="actions-${p.id}">
+        <div class="card__actions-row">
+          <button class="btn btn--vert"   onclick="valider(${p.id})">✔ Valider &amp; envoyer</button>
+          <button class="btn btn--orange" onclick="ouvrirCorrection(${p.id})">✏️ Corriger</button>
         </div>
       </div>
     `
     return card
   }
 
-  function esc(s) {
-    return String(s ?? '')
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;').replace(/'/g,'&#39;')
+  // ── Corriger ──────────────────────────────────────────────
+  function ouvrirCorrection(id) {
+    document.getElementById('edit-' + id).classList.add('open')
+    document.getElementById('actions-' + id).style.display = 'none'
+    document.getElementById('msg-' + id).style.display = 'none'
+    const ta = document.getElementById('edit-ta-' + id)
+    ta.focus()
+    ta.setSelectionRange(ta.value.length, ta.value.length)
   }
 
-  function toggleRejet(id) {
-    const zone = document.getElementById('reject-' + id)
-    zone.classList.toggle('open')
+  function annulerCorrection(id) {
+    document.getElementById('edit-' + id).classList.remove('open')
+    document.getElementById('actions-' + id).style.display = 'flex'
+    document.getElementById('msg-' + id).style.display = 'block'
   }
 
-  // ── Actions ───────────────────────────────────────────────
+  async function envoyerCorrection(id) {
+    const card = document.getElementById('card-' + id)
+    const texte = (document.getElementById('edit-ta-' + id)?.value || '').trim()
+    if (!texte) { afficherToast('Le message ne peut pas être vide', 'err'); return }
+    card.classList.add('resolving')
+    try {
+      await api('POST', '/api/aeg/rejeter/' + id, { message: texte })
+      afficherToast('✔ Version corrigée envoyée', 'ok')
+      disparaitreCard(card)
+      mettreAJourCompteur()
+    } catch(err) {
+      card.classList.remove('resolving')
+      afficherToast('Erreur : ' + err.message, 'err')
+    }
+  }
+
+  // ── Valider ───────────────────────────────────────────────
   async function valider(id) {
     const card = document.getElementById('card-' + id)
     if (!card) return
@@ -633,54 +776,29 @@
     try {
       await api('POST', '/api/aeg/valider/' + id)
       afficherToast('✔ Message envoyé avec succès', 'ok')
-      card.style.transition = 'opacity 0.4s, max-height 0.5s'
-      card.style.opacity = '0'
-      card.style.overflow = 'hidden'
-      setTimeout(() => {
-        card.style.maxHeight = '0'
-        card.style.marginBottom = '0'
-        setTimeout(() => card.remove(), 400)
-      }, 300)
-      mettreAJourCompteur(-1)
+      disparaitreCard(card)
+      mettreAJourCompteur()
     } catch(err) {
       card.classList.remove('resolving')
       afficherToast('Erreur : ' + err.message, 'err')
     }
   }
 
-  async function rejeter(id) {
-    const card = document.getElementById('card-' + id)
-    const alt  = (document.getElementById('alt-' + id)?.value || '').trim()
-    if (!card) return
-    card.classList.add('resolving')
-    try {
-      const body = alt ? { message: alt } : {}
-      await api('POST', '/api/aeg/rejeter/' + id, body)
-      const msg = alt ? '↩ Rejeté et message alternatif enregistré' : '✘ Brouillon rejeté'
-      afficherToast(msg, 'ok')
-      card.style.transition = 'opacity 0.4s'
-      card.style.opacity = '0'
-      setTimeout(() => {
-        card.style.overflow = 'hidden'
-        card.style.maxHeight = '0'
-        card.style.marginBottom = '0'
-        setTimeout(() => card.remove(), 400)
-      }, 300)
-      mettreAJourCompteur(-1)
-    } catch(err) {
-      card.classList.remove('resolving')
-      afficherToast('Erreur : ' + err.message, 'err')
-    }
+  function disparaitreCard(card) {
+    card.style.transition = 'opacity 0.4s, max-height 0.5s'
+    card.style.opacity = '0'
+    card.style.overflow = 'hidden'
+    setTimeout(() => {
+      card.style.maxHeight = '0'
+      card.style.marginBottom = '0'
+      setTimeout(() => card.remove(), 400)
+    }, 300)
   }
 
-  function mettreAJourCompteur(delta) {
+  function mettreAJourCompteur() {
     const liste = document.getElementById('listeCards')
-    const cards = liste.querySelectorAll('.card:not([style*="max-height: 0"])')
-    const n = Math.max(0, cards.length - 1 + delta)
-
     const badge = document.getElementById('headerBadge')
     const titre = document.getElementById('toolbarTitre')
-
     setTimeout(() => {
       const remaining = liste.querySelectorAll('.card').length
       if (!remaining) {
@@ -697,14 +815,12 @@
   // ── Démarrage ────────────────────────────────────────────
   chargerConfig()
 
-  // Auto-connect si secret déjà stocké
   if (SECRET) {
     document.getElementById('authScreen').style.display = 'none'
     document.getElementById('dashboard').style.display = 'block'
     charger()
   }
 
-  // Entrée clavier sur le champ secret
   document.getElementById('secretInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') seConnecter()
   })
