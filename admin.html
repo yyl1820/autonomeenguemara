@@ -568,10 +568,17 @@
           </div>`
       })
     }
+    const lienDiscussion = urlLinkedIn(p.profile_url)
+    if (lienDiscussion) {
+      html += `<div class="card__no-historique">💼 <a href="${esc(lienDiscussion)}" target="_blank" rel="noopener" style="color:var(--bleu)">Voir la discussion →</a></div>`
+    }
+
+    // Le profil n est affiche que s il differe de la discussion, sinon on
+    // proposerait deux fois le meme lien sous deux libelles.
     const lienLinkedIn = urlLinkedIn(p.linkedin_url)
-    if (lienLinkedIn) {
+    if (lienLinkedIn && lienLinkedIn !== lienDiscussion) {
       html += `<div class="card__no-historique">🔗 <a href="${esc(lienLinkedIn)}" target="_blank" rel="noopener" style="color:var(--bleu)">Voir le profil LinkedIn</a></div>`
-    } else if (p.linkedin_url) {
+    } else if (!lienLinkedIn && p.linkedin_url) {
       html += `<div class="card__no-historique">🔗 URL LinkedIn inexploitable : ${esc(p.linkedin_url)}</div>`
     }
     return html + `</div>`
@@ -632,6 +639,10 @@
 
       ${rendrContexte(p)}
 
+      ${p.message_prospect ? `
+      <div class="card__message-label">💬 Message reçu du prospect</div>
+      <div class="card__message">${esc(p.message_prospect)}</div>` : ''}
+
       <div class="card__message-label">Message brouillon</div>
       <div class="card__message" id="msg-${p.id}">${esc(message)}</div>
 
@@ -671,6 +682,7 @@
         <div class="card__actions-row">
           <button class="btn btn--vert"   onclick="valider(${p.id})">✔ Valider &amp; envoyer</button>
           <button class="btn btn--orange" onclick="ouvrirCorrection(${p.id})">✏️ Corriger manuellement</button>
+          <button class="btn btn--bleu" id="dicter-btn-${p.id}" onclick="basculerDictee(${p.id})">🎤 Dicter ma réponse</button>
         </div>
       </div>
     `
@@ -679,6 +691,77 @@
     card.dataset.contexte = resumeContexte(p)
 
     return card
+  }
+
+  // ── Dictée vocale ─────────────────────────────────────────
+  // Web Speech API : la reconnaissance est faite par le navigateur, aucun
+  // audio ne transite par le serveur. Chrome (Android et ordinateur) la
+  // prend en charge ; Firefox non, d'où le garde-fou explicite.
+  const RecoVocale = window.SpeechRecognition || window.webkitSpeechRecognition
+  const dicteesActives = {}
+
+  function libelleDictee(id, enCours) {
+    const btn = document.getElementById('dicter-btn-' + id)
+    if (!btn) return
+    btn.textContent = enCours ? '⏹ Arrêter la dictée' : '🎤 Dicter ma réponse'
+    btn.classList.toggle('btn--rouge', enCours)
+    btn.classList.toggle('btn--bleu', !enCours)
+  }
+
+  function basculerDictee(id) {
+    if (!RecoVocale) {
+      alert("La dictée vocale n'est pas disponible dans ce navigateur.\nUtilisez Chrome, sur Android ou sur ordinateur.")
+      return
+    }
+
+    // Deuxième appui : on arrête.
+    if (dicteesActives[id]) { dicteesActives[id].stop(); return }
+
+    // La dictée écrit dans le champ de correction : il doit être ouvert.
+    const zone = document.getElementById('edit-' + id)
+    if (zone && !zone.classList.contains('open')) ouvrirCorrection(id)
+    const ta = document.getElementById('edit-ta-' + id)
+    if (!ta) return
+
+    const reco = new RecoVocale()
+    reco.lang           = 'fr-FR'
+    reco.continuous     = true
+    reco.interimResults = false
+
+    reco.onresult = (ev) => {
+      let ajout = ''
+      for (let i = ev.resultIndex; i < ev.results.length; i++) {
+        if (ev.results[i].isFinal) ajout += ev.results[i][0].transcript
+      }
+      if (!ajout.trim()) return
+      const actuel = ta.value.replace(/\s+$/, '')
+      ta.value = (actuel ? actuel + ' ' : '') + ajout.trim()
+      ta.dispatchEvent(new Event('input', { bubbles: true }))
+      ta.scrollTop = ta.scrollHeight
+    }
+
+    reco.onerror = (ev) => {
+      const messages = {
+        'not-allowed':          "Accès au micro refusé. Autorisez le microphone pour ce site.",
+        'service-not-allowed':  "Accès au micro refusé par le système.",
+        'audio-capture':        'Aucun microphone détecté.',
+        'network':              'Service de reconnaissance injoignable.',
+      }
+      // 'no-speech' arrive dès un court silence : le signaler serait pénible.
+      if (ev.error !== 'no-speech' && ev.error !== 'aborted') {
+        alert(messages[ev.error] || ('Erreur de dictée : ' + ev.error))
+      }
+    }
+
+    reco.onend = () => { delete dicteesActives[id]; libelleDictee(id, false) }
+
+    try {
+      reco.start()
+    } catch (e) {
+      return
+    }
+    dicteesActives[id] = reco
+    libelleDictee(id, true)
   }
 
   // ── Co-pilote : toggle ────────────────────────────────────
