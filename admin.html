@@ -682,8 +682,14 @@
         <div class="card__actions-row">
           <button class="btn btn--vert"   onclick="valider(${p.id})">✔ Valider &amp; envoyer</button>
           <button class="btn btn--orange" onclick="ouvrirCorrection(${p.id})">✏️ Corriger manuellement</button>
-          <button class="btn btn--bleu" id="dicter-btn-${p.id}" onclick="basculerDictee(${p.id})">🎤 Dicter ma réponse</button>
         </div>
+      </div>
+
+      <!-- Hors de card__actions, que ouvrirCorrection masque : la dictée sert
+           justement pendant la correction, le bouton doit rester atteignable
+           pour pouvoir arrêter l'enregistrement. -->
+      <div class="card__actions-row">
+        <button class="btn btn--bleu" id="dicter-btn-${p.id}" onclick="basculerDictee(${p.id})">🎤 Dicter ma réponse</button>
       </div>
     `
 
@@ -703,7 +709,7 @@
   function libelleDictee(id, enCours) {
     const btn = document.getElementById('dicter-btn-' + id)
     if (!btn) return
-    btn.textContent = enCours ? '⏹ Arrêter la dictée' : '🎤 Dicter ma réponse'
+    btn.textContent = enCours ? '🔴 Arrêter' : '🎤 Dicter ma réponse'
     btn.classList.toggle('btn--rouge', enCours)
     btn.classList.toggle('btn--bleu', !enCours)
   }
@@ -884,9 +890,26 @@
   async function valider(id) {
     const card = document.getElementById('card-' + id)
     if (!card) return
+
+    // Capturé avant l'appel : la validation vide brouillon_message côté
+    // serveur. Après, il n'y aurait plus rien à proposer à la copie.
+    const messageValide = (
+      document.getElementById('edit-ta-' + id)?.value ||
+      document.getElementById('msg-' + id)?.innerText || ''
+    ).trim()
+
     card.classList.add('resolving')
     try {
-      await api('POST', '/api/aeg/valider/' + id)
+      const res = await api('POST', '/api/aeg/valider/' + id)
+
+      // Seuls les canaux automatisés partent vraiment. Pour les autres le
+      // serveur répond envoye:false — annoncer un envoi serait un mensonge.
+      if (res && res.envoye === false) {
+        card.classList.remove('resolving')
+        afficherEnvoiManuel(id, card, res.canal, messageValide)
+        return
+      }
+
       afficherToast('✔ Message envoyé avec succès', 'ok')
       disparaitreCard(card)
       mettreAJourCompteur()
@@ -894,6 +917,51 @@
       card.classList.remove('resolving')
       afficherToast('Erreur : ' + err.message, 'err')
     }
+  }
+
+  // ── Envoi manuel : canal non automatisé ───────────────────
+  function afficherEnvoiManuel(id, card, canal, message) {
+    const actions = document.getElementById('actions-' + id)
+    if (actions) actions.style.display = 'none'
+    const edit = document.getElementById('edit-' + id)
+    if (edit) edit.classList.remove('open')
+
+    const zone = document.createElement('div')
+    zone.className = 'card__edit-zone open'
+    zone.innerHTML = `
+      <label>📋 Message validé — le canal ${esc(canal || 'linkedin')} n'est pas automatisé. Collez-le manuellement dans LinkedIn.</label>
+      <div class="card__message" id="manuel-msg-${id}">${esc(message)}</div>
+      <div class="card__edit-row">
+        <button class="btn btn--bleu"  onclick="copierMessage(${id}, this)">📋 Copier le message</button>
+        <button class="btn btn--ghost" onclick="masquerCard(${id})">Fait — masquer</button>
+      </div>`
+    card.appendChild(zone)
+    zone.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }
+
+  async function copierMessage(id, btn) {
+    const el = document.getElementById('manuel-msg-' + id)
+    if (!el) return
+    try {
+      await navigator.clipboard.writeText(el.innerText)
+      btn.textContent = '✔ Copié'
+    } catch (e) {
+      // Presse-papiers refusé (contexte non sécurisé, permission) : on
+      // sélectionne le texte pour que Ctrl/Cmd+C reste possible.
+      const plage = document.createRange()
+      plage.selectNodeContents(el)
+      const sel = window.getSelection()
+      sel.removeAllRanges()
+      sel.addRange(plage)
+      btn.textContent = 'Sélectionné — Ctrl/Cmd + C'
+    }
+  }
+
+  function masquerCard(id) {
+    const card = document.getElementById('card-' + id)
+    if (!card) return
+    disparaitreCard(card)
+    mettreAJourCompteur()
   }
 
   function disparaitreCard(card) {
