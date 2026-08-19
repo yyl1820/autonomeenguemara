@@ -528,6 +528,19 @@
     } catch(e) { return iso }
   }
 
+  // ── URL LinkedIn : absolue, ou rien ──────────────────────
+  // Une valeur sans schéma est traitée comme un chemin relatif par le
+  // navigateur : href="linkedin" pointe vers autonomeenguemara.fr/linkedin
+  // au lieu du profil. On n'affiche le lien que s'il est exploitable.
+  function urlLinkedIn(brut) {
+    const v = String(brut ?? '').trim()
+    if (!v) return ''
+    if (/^https?:\/\//i.test(v)) return /linkedin\.com/i.test(v) ? v : ''
+    if (/^(www\.)?linkedin\.com\//i.test(v)) return 'https://' + v
+    if (/^\/?in\/[^/\s]+/i.test(v)) return 'https://www.linkedin.com/' + v.replace(/^\//, '')
+    return ''
+  }
+
   // ── Contexte / historique ────────────────────────────────
   function rendrContexte(p) {
     const hist   = Array.isArray(p.historique) ? p.historique : []
@@ -555,8 +568,11 @@
           </div>`
       })
     }
-    if (p.linkedin_url) {
-      html += `<div class="card__no-historique">🔗 <a href="${esc(p.linkedin_url)}" target="_blank" rel="noopener" style="color:var(--bleu)">Voir le profil LinkedIn</a></div>`
+    const lienLinkedIn = urlLinkedIn(p.linkedin_url)
+    if (lienLinkedIn) {
+      html += `<div class="card__no-historique">🔗 <a href="${esc(lienLinkedIn)}" target="_blank" rel="noopener" style="color:var(--bleu)">Voir le profil LinkedIn</a></div>`
+    } else if (p.linkedin_url) {
+      html += `<div class="card__no-historique">🔗 URL LinkedIn inexploitable : ${esc(p.linkedin_url)}</div>`
     }
     return html + `</div>`
   }
