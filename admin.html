@@ -906,7 +906,7 @@
       // serveur répond envoye:false — annoncer un envoi serait un mensonge.
       if (res && res.envoye === false) {
         card.classList.remove('resolving')
-        afficherEnvoiManuel(id, card, res.canal, messageValide)
+        afficherEnvoiManuel(id, card, res.canal, messageValide, res.raison)
         return
       }
 
@@ -920,7 +920,7 @@
   }
 
   // ── Envoi manuel : canal non automatisé ───────────────────
-  function afficherEnvoiManuel(id, card, canal, message) {
+  function afficherEnvoiManuel(id, card, canal, message, raison) {
     const actions = document.getElementById('actions-' + id)
     if (actions) actions.style.display = 'none'
     const edit = document.getElementById('edit-' + id)
@@ -929,7 +929,7 @@
     const zone = document.createElement('div')
     zone.className = 'card__edit-zone open'
     zone.innerHTML = `
-      <label>📋 Message validé — le canal ${esc(canal || 'linkedin')} n'est pas automatisé. Collez-le manuellement dans LinkedIn.</label>
+      <label>📋 Message validé mais <strong>non envoyé</strong> — collez-le manuellement dans ${esc(canal || 'LinkedIn')}.${raison ? `<br><span style="font-weight:400">Raison : ${esc(raison)}</span>` : ''}</label>
       <div class="card__message" id="manuel-msg-${id}">${esc(message)}</div>
       <div class="card__edit-row">
         <button class="btn btn--bleu"  onclick="copierMessage(${id}, this)">📋 Copier le message</button>
