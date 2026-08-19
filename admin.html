@@ -939,12 +939,22 @@
     zone.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   }
 
+  // Le libellé revient de lui-même après 2 s. Sans ce retour, un second
+  // clic ne donne aucun signe : le bouton affiche déjà « Copié ».
+  function libelleTemporaire(btn, texte) {
+    const initial = btn.dataset.initial || (btn.dataset.initial = btn.textContent)
+    btn.textContent = texte
+    clearTimeout(btn._retour)
+    btn._retour = setTimeout(() => { btn.textContent = initial }, 2000)
+  }
+
   async function copierMessage(id, btn) {
     const el = document.getElementById('manuel-msg-' + id)
     if (!el) return
     try {
       await navigator.clipboard.writeText(el.innerText)
-      btn.textContent = '✔ Copié'
+      afficherToast('✔ Message copié', 'ok')
+      libelleTemporaire(btn, '✔ Copié')
     } catch (e) {
       // Presse-papiers refusé (contexte non sécurisé, permission) : on
       // sélectionne le texte pour que Ctrl/Cmd+C reste possible.
